@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+git add .
+git commit -m "psuh to master"
+git push origin master
+
 echo 'npm version patch'
 npm version patch
 
