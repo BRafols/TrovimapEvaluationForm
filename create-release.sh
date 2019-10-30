@@ -18,8 +18,5 @@ git add .
 echo 'commit files'
 git commit -m "version patch"
 
-echo 'beforeTag' 
-git tag -a $releaseBranch -m 'release'
-
 echo 'beforePush'
 git push origin $releaseBranch
