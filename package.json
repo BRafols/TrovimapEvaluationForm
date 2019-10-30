@@ -1,6 +1,6 @@
 {
   "name": "trovimap-evaluation-form",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "main": "dist/TrovimapEvaluationForm.ssr.js",
   "module": "dist/TrovimapEvaluationForm.esm.js",
