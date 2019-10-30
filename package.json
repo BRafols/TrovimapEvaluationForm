@@ -1,27 +1,21 @@
 {
   "name": "trovimap-evaluation-form",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-
   "main": "dist/TrovimapEvaluationForm.ssr.js",
   "module": "dist/TrovimapEvaluationForm.esm.js",
   "unpkg": "dist/TrovimapEvaluationForm.min.js",
-
   "files": [
     "dist/*",
     "src/**/*.vue"
   ],
-
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
     "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
     "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
   },
-
-  "dependencies": {
-  },
-
+  "dependencies": {},
   "devDependencies": {
     "cross-env": "^5.2.0",
     "minimist": "^1.2.0",
