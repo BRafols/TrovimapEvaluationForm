@@ -9,6 +9,9 @@
     "dist/*",
     "src/**/*.vue"
   ],
+  "browser": {
+    "./sfc": "src/my-component.vue"
+  },
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
     "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
