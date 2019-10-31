@@ -4,6 +4,10 @@
 //
 //
 //
+//
+//
+//
+//
 
 var script = {
     data: function data() {
@@ -98,7 +102,7 @@ var normalizeComponent_1 = normalizeComponent;/* script */
 var __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._ssrNode(_vm._ssrEscape("\n    hello "+_vm._s(_vm.name)+"\n"))])};
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-layout',{attrs:{"row":"","wrap":""}},[_c('v-flex',{attrs:{"xs12":""}},[_c('div',[_vm._v("\n            hello "+_vm._s(_vm.name)+"\n        ")])])],1)};
 var __vue_staticRenderFns__ = [];
 
   /* style */
@@ -106,7 +110,7 @@ var __vue_staticRenderFns__ = [];
   /* scoped */
   var __vue_scope_id__ = undefined;
   /* module identifier */
-  var __vue_module_identifier__ = "data-v-0be3d513";
+  var __vue_module_identifier__ = "data-v-379d6286";
   /* functional template */
   var __vue_is_functional_template__ = false;
   /* style inject */
