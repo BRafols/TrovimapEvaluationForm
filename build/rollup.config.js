@@ -32,8 +32,8 @@ const baseConfig = {
 // UMD/IIFE shared settings: externals and output.globals
 // Refer to https://rollupjs.org/guide/en#output-globals for details
 const external = [
-  // list external dependencies, exactly the way it is written in the import statement.
-  // eg. 'jquery'
+  'text-mask-addons',
+  'vue-text-mask'
 ];
 const globals = {
   // Provide global variable names to replace your external imports
@@ -46,7 +46,7 @@ if (!argv.format || argv.format === 'es') {
   const esConfig = {
     ...baseConfig,
     output: {
-      file: 'dist/TrovimapEvaluationForm.esm.js',
+      file: 'dist/vue-trovimap-wizard.esm.js',
       format: 'esm',
       exports: 'named',
     },
@@ -70,9 +70,9 @@ if (!argv.format || argv.format === 'cjs') {
     external,
     output: {
       compact: true,
-      file: 'dist/TrovimapEvaluationForm.ssr.js',
+      file: 'dist/vue-trovimap-wizard.ssr.js',
       format: 'cjs',
-      name: 'TrovimapEvaluationForm',
+      name: 'vue-trovimap-wizard',
       exports: 'named',
       globals,
     },
@@ -97,9 +97,9 @@ if (!argv.format || argv.format === 'iife') {
     external,
     output: {
       compact: true,
-      file: 'dist/TrovimapEvaluationForm.min.js',
+      file: 'dist/vue-trovimap-wizard.min.js',
       format: 'iife',
-      name: 'TrovimapEvaluationForm',
+      name: 'VueTrovimapWizard',
       exports: 'named',
       globals,
     },

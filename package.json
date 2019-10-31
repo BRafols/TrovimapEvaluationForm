@@ -1,24 +1,36 @@
 {
-  "name": "trovimap-evaluation-form",
-  "version": "1.0.10",
-  "description": "",
-  "main": "dist/TrovimapEvaluationForm.ssr.js",
-  "module": "dist/TrovimapEvaluationForm.esm.js",
-  "unpkg": "dist/TrovimapEvaluationForm.min.js",
+  "name": "vue-trovimap-wizard",
+  "version": "1.0.2",
+  "description": "A Vue component for inputting Naira-formatted amounts.",
+  "main": "dist/vue-trovimap-wizard.ssr.js",
+  "module": "dist/vue-trovimap-wizard.esm.js",
+  "unpkg": "dist/vue-trovimap-wizard.min.js",
   "files": [
     "dist/*",
     "src/**/*.vue"
   ],
-  "browser": {
-    "./sfc": "src/TrovimapEvaluationForm.vue"
-  },
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
     "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
     "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
   },
-  "dependencies": {},
+  "author": "Uk Chukundah",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "currency",
+    "input",
+    "naira"
+  ],
+  "dependencies": {
+    "text-mask-addons": "^3.8.0",
+    "vue-text-mask": "^6.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ukchukx/vue-trovimap-wizard"
+  },
   "devDependencies": {
     "cross-env": "^5.2.0",
     "minimist": "^1.2.0",

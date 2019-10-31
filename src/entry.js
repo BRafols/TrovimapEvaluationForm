@@ -1,11 +1,11 @@
 // Import vue component
-import component from './TrovimapEvaluationForm.vue';
+import component from './TrovimapWizard.vue';
 
 // install function executed by Vue.use()
 function install(Vue) {
   if (install.installed) return;
   install.installed = true;
-  Vue.component('TrovimapEvaluationForm', component);
+  Vue.component('TrovimapWizard', component);
 }
 
 // Create module definition for Vue.use()
@@ -32,6 +32,3 @@ component.install = install;
 // Export component by default
 export default component;
 
-// It's possible to expose named exports when writing components that can
-// also be used as directives, etc. - eg. import { RollupDemoDirective } from 'rollup-demo';
-// export const RollupDemoDirective = component;
