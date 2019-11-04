@@ -14,7 +14,7 @@
 
 <script>
 
-import TrovimapWizard from './TrovimapWizard.vue'
+import TrovimapWizard from './components/TrovimapWizard.vue'
 
 export default {
     components: {

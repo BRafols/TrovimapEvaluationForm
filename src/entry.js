@@ -1,10 +1,16 @@
 // Import vue component
-import component from './TrovimapWizard.vue';
+import component from './components/TrovimapWizard.vue';
+import createStore from './store/index.js'
 
 // install function executed by Vue.use()
-function install(Vue) {
+function install(Vue, options = {}) {
   if (install.installed) return;
+
+  if (!options.store) console.warn('Please provide a store!!')
+  if (!options.axios) console.warn('Please provide a axios instance!!')
   install.installed = true;
+  Vue.prototype.axios = axios
+  options.store.registerModule('trovimap', createStore(axios))
   Vue.component('TrovimapWizard', component);
 }
 
