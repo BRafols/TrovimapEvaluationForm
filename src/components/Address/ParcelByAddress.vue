@@ -21,7 +21,7 @@
 
 <script>
 
-import ParcelList from './list/ParcelList'
+import ParcelList from './list/ParcelList.vue'
 
 export default {
     data() {

@@ -47,4 +47,7 @@ const createStore = () => {
     })
 }
 
-export default createStore
+export {
+    createModule,
+    createStore
+}

@@ -23,8 +23,14 @@ const baseConfig = {
         isProduction: true,
       },
     },
+    buble: {
+      
+    },
     postVue: [
-      buble(),
+      buble({
+        objectAssign: 'Object.assign',
+        transforms: { asyncAwait: false }
+      }),
     ],
   },
 };
@@ -33,7 +39,10 @@ const baseConfig = {
 // Refer to https://rollupjs.org/guide/en#output-globals for details
 const external = [
   'text-mask-addons',
-  'vue-text-mask'
+  'vue-text-mask',
+  'axios',
+  'vuetify',
+  'vuex'
 ];
 const globals = {
   // Provide global variable names to replace your external imports

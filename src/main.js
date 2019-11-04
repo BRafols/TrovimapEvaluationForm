@@ -4,7 +4,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import Vuex from 'vuex'
 import Vuetify from 'vuetify';
-import createStore from './store/index.js'
+import { createStore } from './store/index.js'
 import axios from 'axios'
 
 Vue.config.productionTip = false;

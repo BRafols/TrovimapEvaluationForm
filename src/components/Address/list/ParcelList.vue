@@ -6,7 +6,7 @@
 
 <script>
 
-import ParcelListElement from './ParcelListElement'
+import ParcelListElement from './ParcelListElement.vue'
 export default {
     components: {
         ParcelListElement
