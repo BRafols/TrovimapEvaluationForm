@@ -41,13 +41,18 @@ import ParcelByAddress from './Address/ParcelByAddress.vue'
 export default {
     data() {
         return {
-            name: 'borja'
+            name: 'borja',
+            stepperValue: 1
         }
     },
     components: {
         ParcelByAddress
     },
-    methods: {}
+    methods: {
+        complete() {
+            console.log('complete')
+        }
+    }
 }
 </script>
 
