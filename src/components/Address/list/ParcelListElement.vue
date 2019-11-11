@@ -1,12 +1,10 @@
 <template>
-    <v-list-tile @click="selectParcel">
+    <v-list-tile @click="$emit('click')" :class="active === parcel.Id ? 'grey' : ''">
         <v-list-tile-content>
-            <v-list-tile-title v-html="parcel.Id"></v-list-tile-title>
-            <v-list-tile-sub-title v-html="parcel.City"></v-list-tile-sub-title>
-            <v-list-tile-sub-title v-html="parcel.Province"></v-list-tile-sub-title>
-            <v-list-tile-sub-title v-html="parcel.StreetName"></v-list-tile-sub-title>
-            <v-list-tile-sub-title v-html="parcel.StreetNumber"></v-list-tile-sub-title>
-            <v-list-tile-sub-title v-html="parcel.StreetType"></v-list-tile-sub-title>
+            <v-list-tile-title v-html="parcel.StreetName"></v-list-tile-title>
+            <v-list-tile-sub-title>
+                {{ parcel.City }}, {{ parcel.Province }}
+            </v-list-tile-sub-title>
         </v-list-tile-content>
     </v-list-tile>
 </template>
@@ -17,6 +15,10 @@ export default {
         parcel: {
             type: Object,
             required: true,
+        },
+        active: {
+            required: true,
+            validator: prop => typeof prop === 'string' || prop === null
         }
     },
     methods: {

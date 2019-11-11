@@ -3,18 +3,40 @@
         <v-flex xs12>
             <v-text-field
                 name="address"
-                label="Address"
+                label="Dirección"
                 id="address"
                 v-model="address"
+                placeholder="Calle Valencia 359, 08002, Barcelona"
+                @keydown.enter="getParcelsByAddress"
             />
         </v-flex>
-
         <v-flex xs12>
-            <v-btn block color="primary" @click="getParcelsByAddress">Buscar</v-btn>
+            <div v-if="response && response.message" class="v-messages theme--light error--text">
+                <div class="v-messages__wrapper">
+                    <div class="v-messages__message" style="">{{ response.message }}</div>
+                </div>
+            </div>
         </v-flex>
 
         <v-flex xs12>
-            <parcel-list />
+            <v-btn 
+                block
+                color="primary"
+                :disabled="loading"
+                @click="getParcelsByAddress"
+            >
+                Buscar
+            </v-btn>
+        </v-flex>
+
+        <v-flex xs12 v-if="loading" text-sm-center>
+            <v-progress-circular
+                indeterminate
+                color="primary"
+            />
+        </v-flex>
+        <v-flex xs12 v-else>
+            <parcel-list @selected="parcelSelected"/>
         </v-flex>
     </v-layout>
 </template>
@@ -26,7 +48,9 @@ import ParcelList from './list/ParcelList.vue'
 export default {
     data() {
         return {
-            address: 'Passatge Escudellers 7, 08002, Barcelona'
+            address: '',
+            loading: false,
+            response: {}
         }
     },
     components: {
@@ -35,9 +59,18 @@ export default {
     methods: {
         async getParcelsByAddress() {
 
-            this.$store.dispatch('trovimap/FETCH_PARCELS_BY_ADDRESS', this.address)
+            this.loading = true
 
-            console.log('this', this)
+            try {
+                await this.$store.dispatch('trovimap/FETCH_PARCELS_BY_ADDRESS', this.address)
+            } catch (e) {
+                this.response = { ...e.data }
+            } finally {
+                this.loading = false
+            }
+        },
+        parcelSelected(parcel) {
+            this.$emit('addressSelected', parcel)
         }
     }
 }

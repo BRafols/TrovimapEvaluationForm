@@ -42,7 +42,8 @@ const external = [
   'vue-text-mask',
   'axios',
   'vuetify',
-  'vuex'
+  'vuex',
+  'vue2-google-maps'
 ];
 const globals = {
   // Provide global variable names to replace your external imports
