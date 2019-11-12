@@ -21,7 +21,7 @@ Vue.use(Vuetify, {
 Vue.use(Vuex)
 Vue.use(VueGoogleMaps, {
 	load: {
-		key: 'AIzaSyAh5wZK9LX5G4AwjjYzUOiwirtMCbNIeWI',
+		key: process.env.GOOGLE_API_KEY,
 		libraries: 'places', // This is required if you use the Autocomplete plugin
 		// OR: libraries: 'places,drawing'
 		// OR: libraries: 'places,drawing,visualization'

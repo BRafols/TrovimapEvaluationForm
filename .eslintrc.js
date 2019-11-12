@@ -6,9 +6,12 @@ module.exports = {
     },
     extends: 'eslint:recommended',
     env: {
-      browser: true
+      browser: true,
     },
     rules: {
-      "no-console": 0
+      "no-console": 0,
+    },
+    globals: {
+      "process": true
     }
 };
