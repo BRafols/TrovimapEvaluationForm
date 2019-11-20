@@ -1345,7 +1345,6 @@ function install(Vue, options) {
 
   if (!options.store) { console.warn('Please provide a store!!'); }
   if (!options.axios) { console.warn('Please provide a axios instance!!'); }
-  install.installed = true;
   Vue.prototype.axios = options.axios;
   options.store.registerModule('trovimap', createModule());
 
@@ -1364,6 +1363,8 @@ function install(Vue, options) {
   Object.keys(filters).forEach(function (key) {
     Vue.filter(("trovimap_" + key), filters[key]);
   });
+
+  install.installed = true;
 }
 
 // Create module definition for Vue.use()
