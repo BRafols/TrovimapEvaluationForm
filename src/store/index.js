@@ -18,7 +18,7 @@ const createModule = () => {
         },
         getters: {
             apartmentsById: (state) => (buildingUnitId) => {
-                let data = state.buildingUnits[buildingUnitId]
+                let data = [ ...state.buildingUnits[buildingUnitId] ]
 
                 if (data) {
                     return data.sort((a, b) => {

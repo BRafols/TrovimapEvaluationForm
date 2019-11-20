@@ -1320,7 +1320,7 @@ var mutations = {
         mutations: Object.assign({}, mutations),
         getters: {
             apartmentsById: function (state) { return function (buildingUnitId) {
-                var data = state.buildingUnits[buildingUnitId];
+                var data = [].concat( state.buildingUnits[buildingUnitId] );
 
                 if (data) {
                     return data.sort(function (a, b) {
