@@ -34,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ukchukx/vue-trovimap-wizard"
+    "url": "git+https://github.com/BRafols/TrovimapEvaluationForm"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
