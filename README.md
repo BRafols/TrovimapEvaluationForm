@@ -31,9 +31,3 @@ Once installed, it can be used in a template as simply as:
 ```html
 <vue-trovimap-wizard />
 ```
-
-
-To clear the input, call:
-```js
-this.$refs.TrovimapWizard.clear();
-```
