@@ -1,12 +1,14 @@
 // Import vue component
 import TrovimapWizard from './components/TrovimapWizard.vue';
 import ParcelByAddress from './components/Address/ParcelByAddress.vue';
+import BuildingUnitByCadastralReference from './components/Address/BuildingUnitByCadastralReference.vue';
 import ParcelList from './components/Address/list/ParcelList.vue';
 import ParcelListElement from './components/Address/list/ParcelListElement.vue';
 import ApartmentList from './components/Apartment/ApartmentList.vue';
 import ApartmentListElement from './components/Apartment/ApartmentListElement.vue';
 import BuildingUnit from './components/BuildingUnit/BuildingUnit.vue';
 import EvaluationElement from './components/Evaluation/EvaluationElement.vue';
+import EvaluationForm from './components/Evaluation/EvaluationForm.vue';
 import PriceEvolution from './components/Evaluation/History/PriceEvolution.vue';
 import * as filters from './filters/filters'
 
@@ -29,6 +31,8 @@ function install(Vue, options = {}) {
   Vue.component('ApartmentList', ApartmentList)
   Vue.component('ApartmentListElement', ApartmentListElement)
   Vue.component('BuildingUnit', BuildingUnit)
+  Vue.component('BuildingUnitByCadastralReference', BuildingUnitByCadastralReference)
+  Vue.component('EvaluationForm', EvaluationForm)
   Vue.component('EvaluationElement', EvaluationElement)
   Vue.component('PriceEvolution', PriceEvolution)
 

@@ -2,18 +2,18 @@
     <v-layout row wrap>
         <v-flex xs12>
             <v-text-field
-                name="address"
-                label="Dirección"
-                id="address"
-                v-model="address"
+                name="cadastral_reference"
+                label="Referencia Cadastral"
+                id="cadastral_reference"
+                v-model="cadastral_reference"
                 placeholder="Calle Valencia 359, 08002, Barcelona"
-                @keydown.enter="getParcelsByAddress"
+                @keydown.enter="getBuildingUnitByCadastralReference"
                 :error-messages="errors"
             >
                 <template v-slot:append>
                     <v-btn 
                         :disabled="loading"
-                        @click="getParcelsByAddress"
+                        @click="getBuildingUnitByCadastralReference"
                         color="primary"
                         block
                     >
@@ -26,37 +26,46 @@
                         />
                     </v-btn>
                 </template>
+                <div v-if="response && response.message" class="v-messages theme--light error--text">
+                <div class="v-messages__wrapper">
+                    <div class="v-messages__message" style="">{{ response.message }}</div>
+                </div>
+            </div>
             </v-text-field>
         </v-flex>
     </v-layout>
 </template>
 
 <script>
-
 export default {
+    props: {
+        defaultCadastralReference: {
+            type: String,
+            default: () => ''
+        }
+    },
     data() {
         return {
-            address: 'Passatge Escudellers, 7',
             loading: false,
-            response: {}
+            cadastral_reference: this.defaultCadastralReference,
+            response: {
+                message: null
+            }
         }
     },
     methods: {
-        async getParcelsByAddress() {
-
+        async getBuildingUnitByCadastralReference() {
             this.loading = true
-
             try {
-                await this.$store.dispatch('trovimap/FETCH_PARCELS_BY_ADDRESS', this.address)
+                const result = await this.$store.dispatch('trovimap/FETCH_BUILDING_UNITS_BY_CADASTRAL_REFERENCE', this.cadastral_reference)
+                this.response.message = null
+                this.$emit('addressSelected', result)
             } catch (e) {
-                this.response = { ...e.data }
+                this.response.message = e.data.message
             } finally {
                 this.loading = false
             }
         },
-        parcelSelected(parcel) {
-            this.$emit('addressSelected', parcel)
-        }
     },
     computed: {
         errors() {

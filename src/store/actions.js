@@ -16,7 +16,6 @@ const FETCH_PARCELS_BY_ADDRESS = async (context, address) => {
  * 
  * @param {*} context 
  * @param {*} parcelId 
- * TODO:: Fetch conditionally
  */
 const FETCH_BUILDING_UNITS_BY_PARCEL = async (context, parcelId) => {
     const { commit, state } = context
@@ -68,6 +67,8 @@ const FETCH_EVALUATION_BY_APARTMENT_ID = async (context, data) => {
             ...result.data,
             apartmentId
         })
+
+        return result.data
     } catch (e) {
         throw e.response
     }
@@ -83,10 +84,26 @@ const DOWNLOAD_EVALUATION_BY_ID = async (context, evaluationId) => {
     }
 }
 
+const FETCH_BUILDING_UNITS_BY_CADASTRAL_REFERENCE = async (context, reference) => {
+
+    const { commit } = context
+
+    try {
+        const result = await axios.get(`http://localhost:8080/trovi/parcel/cadastral/${reference}`)
+
+        commit('SET_BUILDING_UNITS', result.data)
+
+        return result.data
+    } catch (e) {
+        throw e.response
+    }
+}
+
 export default {
     FETCH_PARCELS_BY_ADDRESS,
     FETCH_BUILDING_UNITS_BY_PARCEL,
     FETCH_EVALUATION_BY_APARTMENT_ID,
     DOWNLOAD_EVALUATION_BY_ID,
-    FETCH_CHARACTERISTICS_BY_APARTMENT_ID
+    FETCH_CHARACTERISTICS_BY_APARTMENT_ID,
+    FETCH_BUILDING_UNITS_BY_CADASTRAL_REFERENCE
 }

@@ -12,7 +12,21 @@
 
                 <v-stepper-items>
                     <v-stepper-content step="1">
+                        <v-flex xs12 text-xs-center>
+                            <label class="title" for="">Busca tu inmueble por la dirección o por referencia catastral</label>    
+                        </v-flex>
                         <parcel-by-address @addressSelected="this.onAddressSelected"/>
+                        
+                        <building-unit-by-cadastral-reference 
+                            @addressSelected="this.onCadastralAddressSelected"
+                        />
+
+                        <v-layout row wrap>
+                            <v-flex xs12>
+                                <parcel-list @selected="onAddressSelected"/>
+                            </v-flex>
+                        </v-layout>
+
                         <v-layout row wrap>
                             <v-flex xs3 md2>
                                 <v-btn
@@ -51,17 +65,26 @@
                     <v-stepper-content step="3">
                         <v-layout row wrap>
                             <v-flex xs12>
-                                <evaluation-element
+                                <evaluation-form
                                     :parcel="address"
                                     :apartment="apartment"
                                     :apartmentId="apartment.Id"
                                     v-if="apartment.Id"
+                                    @evaluationCompleted="onEvaluationCompleted"
                                 />
                             </v-flex>
                         </v-layout>
                         <v-layout row wrap>
                             <v-flex xs3 md2 offset-xs9 offset-md10>
                                 <v-btn block flat @click.native="stepperValue = 2">Atrás</v-btn>
+                            </v-flex>
+                        </v-layout>
+                    </v-stepper-content>
+
+                    <v-stepper-content step="4">
+                        <v-layout row wrap>
+                            <v-flex xs12 text-xs-center>
+                                <slot name="success" />
                             </v-flex>
                         </v-layout>
                     </v-stepper-content>
@@ -74,8 +97,10 @@
 <script>
 
 import ParcelByAddress from './Address/ParcelByAddress.vue'
+import BuildingUnitByCadastralReference from './Address/BuildingUnitByCadastralReference.vue'
 import BuildingUnit from './BuildingUnit/BuildingUnit.vue'
-import EvaluationElement from './Evaluation/EvaluationElement.vue'
+import EvaluationForm from './Evaluation/EvaluationForm.vue'
+import ParcelList from './Address/list/ParcelList.vue'
 
 export default {
     data() {
@@ -89,7 +114,9 @@ export default {
     components: {
         ParcelByAddress,
         BuildingUnit,
-        EvaluationElement
+        EvaluationForm,
+        BuildingUnitByCadastralReference,
+        ParcelList
     },
     methods: {
         onAddressSelected(address) {
@@ -97,6 +124,16 @@ export default {
         },
         onApartmentSelected(apartment) {
             this.apartment = apartment
+        },
+        onCadastralAddressSelected(data) {
+            if (data.Apartments.length) {
+                this.apartment = data.Apartments[0]
+                this.stepperValue = 3
+            }
+        },
+        onEvaluationCompleted(evaluation) {
+            this.$emit('evaluationCompleted', evaluation)
+            this.stepperValue = 4
         }
     }
 }

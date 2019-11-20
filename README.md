@@ -29,14 +29,9 @@ import TrovimapWizard from 'vue-trovimap-wizard';
 Once installed, it can be used in a template as simply as:
 
 ```html
-<naira-input ref="TrovimapWizard" :initial-amount="initialAmount" v-model="amount" />
+<vue-trovimap-wizard />
 ```
 
-Or to style as a Bootstrap input:
-
-```html
-<naira-input class="form-control" ref="TrovimapWizard" :initial-amount="initialAmount" v-model="amount" />
-```
 
 To clear the input, call:
 ```js
