@@ -65,7 +65,7 @@ function install2(Vue, options = {}) {
 
 // Create module definition for Vue.use()
 const plugin = {
-  install,
+  install2,
 };
 
 // To auto-install when vue is found
