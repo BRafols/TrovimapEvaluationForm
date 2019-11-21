@@ -16,7 +16,11 @@ import { createModule } from './store/index.js'
 
 // install function executed by Vue.use()
 function install(Vue, options = {}) {
-  if (install.installed) return;
+  console.log('installing...', install)
+  if (install.installed) {
+    console.log('installed, returning')
+    return
+  };
 
   if (!options.store) console.warn('Please provide a store!!')
   if (!options.axios) console.warn('Please provide a axios instance!!')
