@@ -21,7 +21,9 @@ function install(Vue, options = {}) {
   if (!options.store) console.warn('Please provide a store!!')
   if (!options.axios) console.warn('Please provide a axios instance!!')
   Vue.prototype.axios = options.axios
-  options.store.registerModule('trovimap', createModule(axios))
+
+  console.log('vue-trovimap-wizard.install')
+  options.store.registerModule('trovimap', createModule(options.axios))
 
   Vue.component('TrovimapWizard', TrovimapWizard);
   Vue.component('ParcelByAddress', ParcelByAddress)
@@ -38,6 +40,8 @@ function install(Vue, options = {}) {
   Object.keys(filters).forEach(key => {
     Vue.filter(`trovimap_${key}`, filters[key])
   })
+
+  console.log('vue-trovimap-wizard.install.end', Object.keys(options.store.state))
 
   install.installed = true;
 }
