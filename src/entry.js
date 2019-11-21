@@ -72,7 +72,7 @@ if (GlobalVue) {
 TrovimapWizard.install = install;
 
 // Export component by default
-export default TrovimapWizard;
+export default plugin;
 
 export {
   TrovimapWizard,
