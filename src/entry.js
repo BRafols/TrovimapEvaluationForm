@@ -14,8 +14,21 @@ import * as filters from './filters/filters'
 
 import { createModule } from './store/index.js'
 
+const Trovimap = {
+  install(Vue, args = {}) {
+    console.log('install.init')
+    if (this.installed) {
+      console.log('already installed')
+    }
+
+    this.installed = true
+  }
+}
+
+export default Trovimap
+
 // install function executed by Vue.use()
-function install(Vue, options = {}) {
+function install2(Vue, options = {}) {
   console.log('installing...', install)
   if (install.installed) {
     console.log('installed, returning')
@@ -72,7 +85,7 @@ if (GlobalVue) {
 TrovimapWizard.install = install;
 
 // Export component by default
-export default plugin;
+//export default plugin;
 
 export {
   TrovimapWizard,

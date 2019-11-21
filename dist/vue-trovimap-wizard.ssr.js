@@ -1,4 +1,4 @@
-'use strict';Object.defineProperty(exports,'__esModule',{value:true});function _interopDefault(e){return(e&&(typeof e==='object')&&'default'in e)?e['default']:e}require('vuex');var axios=_interopDefault(require('axios')),Vue=_interopDefault(require('vue'));//
+'use strict';Object.defineProperty(exports,'__esModule',{value:true});require('vuex'),require('axios'),require('vue');//
 //
 //
 //
@@ -1170,7 +1170,7 @@ var __vue_staticRenderFns__$b = [];
   
 
   
-  var EvaluationElement = normalizeComponent(
+  normalizeComponent(
     { render: __vue_render__$b, staticRenderFns: __vue_staticRenderFns__$b },
     __vue_inject_styles__$b,
     __vue_script__$b,
@@ -1181,198 +1181,17 @@ var __vue_staticRenderFns__$b = [];
     undefined,
     createInjectorSSR,
     undefined
-  );var date = function (string) {
-    var date = new Date(string);
+  );// Import vue component
 
-    return ((date.getDay()) + "/" + (date.getMonth()) + "/" + (date.getFullYear()))
-};var filters = /*#__PURE__*/Object.freeze({date: date});var FETCH_PARCELS_BY_ADDRESS = async function (context, address) {
+var Trovimap = {
+  install: function install(Vue, args) {
 
-    var commit = context.commit;
-    try {
-        var result = await axios.get(("http://localhost:8080/trovi/parcel?address=" + address));
-
-        commit('SET_PARCELS', result.data);
-    } catch (e) {
-        throw e.response
+    console.log('install.init');
+    if (this.installed) {
+      console.log('already installed');
     }
-};
-
-/**
- * 
- * @param {*} context 
- * @param {*} parcelId 
- */
-var FETCH_BUILDING_UNITS_BY_PARCEL = async function (context, parcelId) {
-    var commit = context.commit;
-    var state = context.state;
-
-    if (state.buildingUnits[parcelId]) { return }
-
-    try {
-        var result = await axios.get(("http://localhost:8080/trovi/parcel/" + parcelId));
-
-        commit('SET_BUILDING_UNITS', result.data);
-    } catch (e) {
-        throw e.response
-    }
-};
-
-var FETCH_CHARACTERISTICS_BY_APARTMENT_ID = async function (context, apartmentId) {
-
-    try {
-        var result = await axios.get(("http://localhost:8080/trovi/apartment/" + apartmentId + "/characteristics"));
-
-        var data = {
-            ApartmentId: result.data.ApartmentId,
-            ParcelId: result.data.ParcelId,
-            CadastralReference: result.data.CadastralReference,
-            Location: {
-              lat: result.data.Location.lat,
-              lon: result.data.Location.lon
-            },
-            LivingArea: result.data.LivingArea
-        };
-
-        return data
-    } catch (e) {
-        throw e.response
-    }
-
-};
-
-var FETCH_EVALUATION_BY_APARTMENT_ID = async function (context, data) {
-    var commit = context.commit;
-    var payload = data.payload;
-    var apartmentId = data.apartmentId;
-
-
-    try {
-
-        var result = await axios.post(("http://localhost:8080/trovi/apartment/" + apartmentId), payload);
-
-        commit ('SET_APARTMENT', Object.assign({}, result.data,
-            {apartmentId: apartmentId}));
-
-        return result.data
-    } catch (e) {
-        throw e.response
-    }
-};
-
-var DOWNLOAD_EVALUATION_BY_ID = async function (context, evaluationId) {
-    try {
-        return await axios.get(("http://localhost:8080/trovi/evaluation/" + evaluationId), {
-            responseType: 'arraybuffer'
-        })
-    } catch (e) {
-        throw e.response
-    }
-};
-
-var FETCH_BUILDING_UNITS_BY_CADASTRAL_REFERENCE = async function (context, reference) {
-
-    var commit = context.commit;
-
-    try {
-        var result = await axios.get(("http://localhost:8080/trovi/parcel/cadastral/" + reference));
-
-        commit('SET_BUILDING_UNITS', result.data);
-
-        return result.data
-    } catch (e) {
-        throw e.response
-    }
-};
-
-var actions = {
-    FETCH_PARCELS_BY_ADDRESS: FETCH_PARCELS_BY_ADDRESS,
-    FETCH_BUILDING_UNITS_BY_PARCEL: FETCH_BUILDING_UNITS_BY_PARCEL,
-    FETCH_EVALUATION_BY_APARTMENT_ID: FETCH_EVALUATION_BY_APARTMENT_ID,
-    DOWNLOAD_EVALUATION_BY_ID: DOWNLOAD_EVALUATION_BY_ID,
-    FETCH_CHARACTERISTICS_BY_APARTMENT_ID: FETCH_CHARACTERISTICS_BY_APARTMENT_ID,
-    FETCH_BUILDING_UNITS_BY_CADASTRAL_REFERENCE: FETCH_BUILDING_UNITS_BY_CADASTRAL_REFERENCE
-};var SET_PARCELS = function (state, data) {
-    Vue.set(state, 'parcels', data);
-};
-
-var SET_BUILDING_UNITS = function (state, data) {
-    Vue.set(state.buildingUnits, data.Id, data.Apartments);
-};
-
-var SET_APARTMENT = function (state, data) {
-    var apartmentId = data.apartmentId;
-    Vue.set(state.evaluations, apartmentId, data);
-};
-
-var mutations = {
-    SET_PARCELS: SET_PARCELS,
-    SET_BUILDING_UNITS: SET_BUILDING_UNITS,
-    SET_APARTMENT: SET_APARTMENT
-};var createModule = function () {
-    return {
-        namespaced: true,
-        state: {
-            parcels: [],
-            buildingUnits: {},
-            evaluations: {}
-        },
-        actions: Object.assign({}, actions),
-        mutations: Object.assign({}, mutations),
-        getters: {
-            apartmentsById: function (state) { return function (buildingUnitId) {
-                var data = [].concat( state.buildingUnits[buildingUnitId] );
-
-                if (data) {
-                    return data.sort(function (a, b) {
-                        if (a.Floor === b.Floor) {
-                            return a.Door < b.Door ? -1 : 1
-                        }
-                        return a.Floor < b.Floor ? -1 : 1
-                    })
-                }
-
-                return data
-            }; }
-        }
-    }
-};// Import vue component
-
-// install function executed by Vue.use()
-function install(Vue, options) {
-  if ( options === void 0 ) options = {};
-
-  console.log('installing...', install);
-  if (install.installed) {
-    console.log('installed, returning');
-    return
   }
-  if (!options.store) { console.warn('Please provide a store!!'); }
-  if (!options.axios) { console.warn('Please provide a axios instance!!'); }
-  Vue.prototype.axios = options.axios;
-
-  console.log('vue-trovimap-wizard.install');
-  options.store.registerModule('trovimap', createModule(options.axios));
-
-  Vue.component('TrovimapWizard', TrovimapWizard);
-  Vue.component('ParcelByAddress', ParcelByAddress);
-  Vue.component('ParcelList', ParcelList);
-  Vue.component('ParcelListElement', ParcelListElement);
-  Vue.component('ApartmentList', ApartmentList);
-  Vue.component('ApartmentListElement', ApartmentListElement);
-  Vue.component('BuildingUnit', BuildingUnit);
-  Vue.component('BuildingUnitByCadastralReference', BuildingUnitByCadastralReference);
-  Vue.component('EvaluationForm', EvaluationForm);
-  Vue.component('EvaluationElement', EvaluationElement);
-  Vue.component('PriceEvolution', PriceEvolution);
-
-  Object.keys(filters).forEach(function (key) {
-    Vue.filter(("trovimap_" + key), filters[key]);
-  });
-
-  console.log('vue-trovimap-wizard.install.end', Object.keys(options.store.state));
-
-  install.installed = true;
-}
+};
 
 // Create module definition for Vue.use()
 var plugin = {
@@ -1393,4 +1212,4 @@ if (GlobalVue) {
 
 // Inject install function into component - allows component
 // to be registered via Vue.use() as well as Vue.component()
-TrovimapWizard.install = install;exports.ParcelByAddress=ParcelByAddress;exports.TrovimapWizard=TrovimapWizard;exports.default=TrovimapWizard;
+TrovimapWizard.install = install;exports.ParcelByAddress=ParcelByAddress;exports.TrovimapWizard=TrovimapWizard;exports.default=Trovimap;
