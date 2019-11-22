@@ -1337,84 +1337,43 @@ var mutations = {
     }
 };// Import vue component
 
-var Trovimap = {
-  install: function install(Vue, args) {
+function install(Vue, args) {
     if ( args === void 0 ) args = {};
 
-    console.log('install.init');
-    if (this.installed) {
-      console.log('already installed');
-    }
+    console.log('install');
+    if (install.installed) { return }
+    install.installed = true;
 
     if (!args.store) { console.warn('Please provide a store!!'); }
-  if (!args.axios) { console.warn('Please provide a axios instance!!'); }
-  Vue.prototype.axios = args.axios;
+    if (!args.axios) { console.warn('Please provide a axios instance!!'); }
+    Vue.prototype.axios = args.axios;
 
-  console.log('vue-trovimap-wizard.install');
-  args.store.registerModule('trovimap', createModule(args.axios));
+    console.log('vue-trovimap-wizard.install');
+    args.store.registerModule('trovimap', createModule(args.axios));
 
-  Vue.component('TrovimapWizard', __vue_component__$8);
-  Vue.component('ParcelByAddress', __vue_component__);
-  Vue.component('ParcelList', __vue_component__$7);
-  Vue.component('ParcelListElement', __vue_component__$6);
-  Vue.component('ApartmentList', __vue_component__$3);
-  Vue.component('ApartmentListElement', __vue_component__$2);
-  Vue.component('BuildingUnit', __vue_component__$4);
-  Vue.component('BuildingUnitByCadastralReference', __vue_component__$1);
-  Vue.component('EvaluationForm', __vue_component__$5);
-  Vue.component('EvaluationElement', __vue_component__$b);
-  Vue.component('PriceEvolution', __vue_component__$9);
+    Vue.component('TrovimapWizard', __vue_component__$8);
+    Vue.component('ParcelByAddress', __vue_component__);
+    Vue.component('ParcelList', __vue_component__$7);
+    Vue.component('ParcelListElement', __vue_component__$6);
+    Vue.component('ApartmentList', __vue_component__$3);
+    Vue.component('ApartmentListElement', __vue_component__$2);
+    Vue.component('BuildingUnit', __vue_component__$4);
+    Vue.component('BuildingUnitByCadastralReference', __vue_component__$1);
+    Vue.component('EvaluationForm', __vue_component__$5);
+    Vue.component('EvaluationElement', __vue_component__$b);
+    Vue.component('PriceEvolution', __vue_component__$9);
 
-  Object.keys(filters).forEach(function (key) {
-    Vue.filter(("trovimap_" + key), filters[key]);
-  });
+    Object.keys(filters).forEach(function (key) {
+        Vue.filter(("trovimap_" + key), filters[key]);
+    });
 
-  console.log('vue-trovimap-wizard.install.end', Object.keys(args.store.state));
-
-  this.installed = true;
+    console.log('vue-trovimap-wizard.install.end', Object.keys(args.store.state));
+}var VueTrovimapWizard = function () {
+  console.log('VueTrovimapWizard', install);
+  return {
+    install: install,
+    installed: false
   }
-};
-
-// install function executed by Vue.use()
-function install2(Vue, args) {
-  if ( args === void 0 ) args = {};
-
-  console.log('installing...', install);
-  if (install.installed) {
-    console.log('installed, returning');
-    return
-  }
-  if (!args.store) { console.warn('Please provide a store!!'); }
-  if (!args.axios) { console.warn('Please provide a axios instance!!'); }
-  Vue.prototype.axios = args.axios;
-
-  console.log('vue-trovimap-wizard.install');
-  args.store.registerModule('trovimap', createModule(args.axios));
-
-  Vue.component('TrovimapWizard', __vue_component__$8);
-  Vue.component('ParcelByAddress', __vue_component__);
-  Vue.component('ParcelList', __vue_component__$7);
-  Vue.component('ParcelListElement', __vue_component__$6);
-  Vue.component('ApartmentList', __vue_component__$3);
-  Vue.component('ApartmentListElement', __vue_component__$2);
-  Vue.component('BuildingUnit', __vue_component__$4);
-  Vue.component('BuildingUnitByCadastralReference', __vue_component__$1);
-  Vue.component('EvaluationForm', __vue_component__$5);
-  Vue.component('EvaluationElement', __vue_component__$b);
-  Vue.component('PriceEvolution', __vue_component__$9);
-
-  Object.keys(filters).forEach(function (key) {
-    Vue.filter(("trovimap_" + key), filters[key]);
-  });
-
-  console.log('vue-trovimap-wizard.install.end', Object.keys(args.store.state));
-
-  install.installed = true;
-}
-
-// Create module definition for Vue.use()
-var plugin = {
-  install2: install2,
 };
 
 // To auto-install when vue is found
@@ -1426,5 +1385,5 @@ if (typeof window !== 'undefined') {
   GlobalVue = global.Vue;
 }
 if (GlobalVue) {
-  GlobalVue.use(plugin);
-}exports.ParcelByAddress=__vue_component__;exports.TrovimapWizard=__vue_component__$8;exports.default=Trovimap;
+  GlobalVue.use(VueTrovimapWizard());
+}exports.default=VueTrovimapWizard;
