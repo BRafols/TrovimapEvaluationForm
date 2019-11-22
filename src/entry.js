@@ -82,7 +82,7 @@ if (GlobalVue) {
 
 // Inject install function into component - allows component
 // to be registered via Vue.use() as well as Vue.component()
-TrovimapWizard.install = install;
+// TrovimapWizard.install = install;
 
 // Export component by default
 //export default plugin;
