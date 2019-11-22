@@ -1345,7 +1345,32 @@ var Trovimap = {
       console.log('already installed');
     }
 
-    this.installed = true;
+    if (!options.store) { console.warn('Please provide a store!!'); }
+  if (!options.axios) { console.warn('Please provide a axios instance!!'); }
+  Vue.prototype.axios = options.axios;
+
+  console.log('vue-trovimap-wizard.install');
+  options.store.registerModule('trovimap', createModule(options.axios));
+
+  Vue.component('TrovimapWizard', TrovimapWizard);
+  Vue.component('ParcelByAddress', ParcelByAddress);
+  Vue.component('ParcelList', ParcelList);
+  Vue.component('ParcelListElement', ParcelListElement);
+  Vue.component('ApartmentList', ApartmentList);
+  Vue.component('ApartmentListElement', ApartmentListElement);
+  Vue.component('BuildingUnit', BuildingUnit);
+  Vue.component('BuildingUnitByCadastralReference', BuildingUnitByCadastralReference);
+  Vue.component('EvaluationForm', EvaluationForm);
+  Vue.component('EvaluationElement', EvaluationElement);
+  Vue.component('PriceEvolution', PriceEvolution);
+
+  Object.keys(filters).forEach(function (key) {
+    Vue.filter(("trovimap_" + key), filters[key]);
+  });
+
+  console.log('vue-trovimap-wizard.install.end', Object.keys(options.store.state));
+
+  this.installed = true;
   }
 };
 
