@@ -1,6 +1,6 @@
 {
   "name": "vue-trovimap-wizard",
-  "version": "1.1.17",
+  "version": "1.1.18",
   "description": "A Vue component for inputting Naira-formatted amounts.",
   "main": "dist/vue-trovimap-wizard.ssr.js",
   "module": "dist/vue-trovimap-wizard.esm.js",
