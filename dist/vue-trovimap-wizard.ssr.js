@@ -161,7 +161,7 @@ var __vue_staticRenderFns__ = [];
   
 
   
-  var ParcelByAddress = normalizeComponent(
+  var __vue_component__ = normalizeComponent(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
     __vue_script__,
@@ -271,7 +271,7 @@ var __vue_staticRenderFns__$1 = [];
   
 
   
-  var BuildingUnitByCadastralReference = normalizeComponent(
+  var __vue_component__$1 = normalizeComponent(
     { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
     __vue_inject_styles__$1,
     __vue_script__$1,
@@ -331,7 +331,7 @@ var __vue_staticRenderFns__$2 = [];
   
 
   
-  var ApartmentListElement = normalizeComponent(
+  var __vue_component__$2 = normalizeComponent(
     { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
     __vue_inject_styles__$2,
     __vue_script__$2,
@@ -350,7 +350,7 @@ var script$3 = {
         }
     },
     components: {
-        ApartmentListElement: ApartmentListElement
+        ApartmentListElement: __vue_component__$2
     },
     props: {
         items: {
@@ -387,7 +387,7 @@ var __vue_staticRenderFns__$3 = [];
   
 
   
-  var ApartmentList = normalizeComponent(
+  var __vue_component__$3 = normalizeComponent(
     { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
     __vue_inject_styles__$3,
     __vue_script__$3,
@@ -413,7 +413,7 @@ var script$4 = {
         }
     },
     components: {
-        ApartmentList: ApartmentList
+        ApartmentList: __vue_component__$3
     },
     computed: {
         apartments: function apartments() {
@@ -467,7 +467,7 @@ var __vue_staticRenderFns__$4 = [];
   
 
   
-  var BuildingUnit = normalizeComponent(
+  var __vue_component__$4 = normalizeComponent(
     { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
     __vue_inject_styles__$4,
     __vue_script__$4,
@@ -711,7 +711,7 @@ var __vue_staticRenderFns__$5 = [];
   
 
   
-  var EvaluationForm = normalizeComponent(
+  var __vue_component__$5 = normalizeComponent(
     { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
     __vue_inject_styles__$5,
     __vue_script__$5,
@@ -773,7 +773,7 @@ var __vue_staticRenderFns__$6 = [];
   
 
   
-  var ParcelListElement = normalizeComponent(
+  var __vue_component__$6 = normalizeComponent(
     { render: __vue_render__$6, staticRenderFns: __vue_staticRenderFns__$6 },
     __vue_inject_styles__$6,
     __vue_script__$6,
@@ -792,7 +792,7 @@ var script$7 = {
         }
     },
     components: {
-        ParcelListElement: ParcelListElement
+        ParcelListElement: __vue_component__$6
     },
     computed: {
         items: function items() {
@@ -828,7 +828,7 @@ var __vue_staticRenderFns__$7 = [];
   
 
   
-  var ParcelList = normalizeComponent(
+  var __vue_component__$7 = normalizeComponent(
     { render: __vue_render__$7, staticRenderFns: __vue_staticRenderFns__$7 },
     __vue_inject_styles__$7,
     __vue_script__$7,
@@ -851,11 +851,11 @@ var script$8 = {
         }
     },
     components: {
-        ParcelByAddress: ParcelByAddress,
-        BuildingUnit: BuildingUnit,
-        EvaluationForm: EvaluationForm,
-        BuildingUnitByCadastralReference: BuildingUnitByCadastralReference,
-        ParcelList: ParcelList
+        ParcelByAddress: __vue_component__,
+        BuildingUnit: __vue_component__$4,
+        EvaluationForm: __vue_component__$5,
+        BuildingUnitByCadastralReference: __vue_component__$1,
+        ParcelList: __vue_component__$7
     },
     methods: {
         onAddressSelected: function onAddressSelected(address) {
@@ -898,7 +898,7 @@ var __vue_staticRenderFns__$8 = [];
   
 
   
-  var TrovimapWizard = normalizeComponent(
+  var __vue_component__$8 = normalizeComponent(
     { render: __vue_render__$8, staticRenderFns: __vue_staticRenderFns__$8 },
     __vue_inject_styles__$8,
     __vue_script__$8,
@@ -978,7 +978,7 @@ var __vue_staticRenderFns__$9 = [];
   
 
   
-  var PriceEvolution = normalizeComponent(
+  var __vue_component__$9 = normalizeComponent(
     { render: __vue_render__$9, staticRenderFns: __vue_staticRenderFns__$9 },
     __vue_inject_styles__$9,
     __vue_script__$9,
@@ -1057,7 +1057,7 @@ var __vue_staticRenderFns__$a = [];
   
 
   
-  var Comparable = normalizeComponent(
+  var __vue_component__$a = normalizeComponent(
     { render: __vue_render__$a, staticRenderFns: __vue_staticRenderFns__$a },
     __vue_inject_styles__$a,
     __vue_script__$a,
@@ -1083,8 +1083,8 @@ var script$b = {
       }  
     },
     components: {
-        PriceEvolution: PriceEvolution,
-        Comparable: Comparable
+        PriceEvolution: __vue_component__$9,
+        Comparable: __vue_component__$a
     },
     computed: {
         priceItems: function priceItems() {
@@ -1170,7 +1170,7 @@ var __vue_staticRenderFns__$b = [];
   
 
   
-  var EvaluationElement = normalizeComponent(
+  var __vue_component__$b = normalizeComponent(
     { render: __vue_render__$b, staticRenderFns: __vue_staticRenderFns__$b },
     __vue_inject_styles__$b,
     __vue_script__$b,
@@ -1337,6 +1337,7 @@ var mutations = {
     }
 };// Import vue component
 
+<<<<<<< HEAD
 var Trovimap = function () {
   return {
     install: function install(Vue, args) {
@@ -1371,49 +1372,45 @@ var Trovimap = function () {
   
       this.installed = true;
     }
+=======
+function install(Vue, args) {
+    if ( args === void 0 ) args = {};
+
+    console.log('install');
+    if (install.installed) { return }
+    install.installed = true;
+
+    if (!args.store) { console.warn('Please provide a store!!'); }
+    if (!args.axios) { console.warn('Please provide a axios instance!!'); }
+    Vue.prototype.axios = args.axios;
+
+    console.log('vue-trovimap-wizard.install');
+    args.store.registerModule('trovimap', createModule(args.axios));
+
+    Vue.component('TrovimapWizard', __vue_component__$8);
+    Vue.component('ParcelByAddress', __vue_component__);
+    Vue.component('ParcelList', __vue_component__$7);
+    Vue.component('ParcelListElement', __vue_component__$6);
+    Vue.component('ApartmentList', __vue_component__$3);
+    Vue.component('ApartmentListElement', __vue_component__$2);
+    Vue.component('BuildingUnit', __vue_component__$4);
+    Vue.component('BuildingUnitByCadastralReference', __vue_component__$1);
+    Vue.component('EvaluationForm', __vue_component__$5);
+    Vue.component('EvaluationElement', __vue_component__$b);
+    Vue.component('PriceEvolution', __vue_component__$9);
+
+    Object.keys(filters).forEach(function (key) {
+        Vue.filter(("trovimap_" + key), filters[key]);
+    });
+
+    console.log('vue-trovimap-wizard.install.end', Object.keys(args.store.state));
+}var VueTrovimapWizard = function () {
+  console.log('VueTrovimapWizard', install);
+  return {
+    install: install,
+    installed: false
+>>>>>>> 5f5bac94ed6c44df20583689c0e07a42b321d508
   }
-};
-
-// install function executed by Vue.use()
-function install2(Vue, args) {
-  if ( args === void 0 ) args = {};
-
-  console.log('installing...', install);
-  if (install.installed) {
-    console.log('installed, returning');
-    return
-  }
-  if (!args.store) { console.warn('Please provide a store!!'); }
-  if (!args.axios) { console.warn('Please provide a axios instance!!'); }
-  Vue.prototype.axios = args.axios;
-
-  console.log('vue-trovimap-wizard.install');
-  args.store.registerModule('trovimap', createModule(args.axios));
-
-  Vue.component('TrovimapWizard', TrovimapWizard);
-  Vue.component('ParcelByAddress', ParcelByAddress);
-  Vue.component('ParcelList', ParcelList);
-  Vue.component('ParcelListElement', ParcelListElement);
-  Vue.component('ApartmentList', ApartmentList);
-  Vue.component('ApartmentListElement', ApartmentListElement);
-  Vue.component('BuildingUnit', BuildingUnit);
-  Vue.component('BuildingUnitByCadastralReference', BuildingUnitByCadastralReference);
-  Vue.component('EvaluationForm', EvaluationForm);
-  Vue.component('EvaluationElement', EvaluationElement);
-  Vue.component('PriceEvolution', PriceEvolution);
-
-  Object.keys(filters).forEach(function (key) {
-    Vue.filter(("trovimap_" + key), filters[key]);
-  });
-
-  console.log('vue-trovimap-wizard.install.end', Object.keys(args.store.state));
-
-  install.installed = true;
-}
-
-// Create module definition for Vue.use()
-var plugin = {
-  install2: install2,
 };
 
 // To auto-install when vue is found
@@ -1425,5 +1422,5 @@ if (typeof window !== 'undefined') {
   GlobalVue = global.Vue;
 }
 if (GlobalVue) {
-  GlobalVue.use(plugin);
-}exports.ParcelByAddress=ParcelByAddress;exports.TrovimapWizard=TrovimapWizard;exports.default=Trovimap;
+  GlobalVue.use(VueTrovimapWizard());
+}exports.default=VueTrovimapWizard;
